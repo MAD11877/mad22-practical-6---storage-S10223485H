@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mad-practical-6-ba6dc-default-rtdb.asia-southeast1.firebasedatabase.app/Users/mad");
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Users").child("mad");
         ArrayList<String> List = new ArrayList<>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -64,4 +65,5 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -21,7 +21,13 @@ public class myAdaptor extends RecyclerView.Adapter<myAdaptor.myViewHolder>{
     }
 
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout, parent, false);
+        View item;
+        if (viewType == 0){
+            item = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout, parent, false);
+        }
+        else{
+            item = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout2, parent, false);
+        }
         return new myViewHolder(item);
     }
 
@@ -29,6 +35,16 @@ public class myAdaptor extends RecyclerView.Adapter<myAdaptor.myViewHolder>{
         User u = data.get(position);
         holder.name.setText(u.getName());
         holder.description.setText(u.getDescription());
+    }
+
+    public int getItemViewType(int position){
+        User u = data.get(position);
+        if (u.getName().charAt(u.getName().length() - 1) == '7'){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
 
     public int getItemCount(){
